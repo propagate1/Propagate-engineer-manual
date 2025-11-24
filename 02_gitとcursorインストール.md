@@ -85,11 +85,11 @@ npm -v
 
 ## 4. Cursor のインストール
 
-### 4-1. Windows＋WSL の人
-
 1. 公式サイトから Cursor をダウンロード  
    - https://cursor.com/ja/download
-   - Windows → **Windows(x64) (ユーザー)** を選択
+   - Windows → **Windows(x64) (ユーザー)** を選択（Windowsの人）
+   - Mac → Mac → **macOS（Apple Silicon / Intel）用インストーラー** を選択してダウンロードする
+（ほとんどのMacはApple Siliconなので，通常は「macOS（Apple Silicon）」を選べばよい）
 2. インストーラーを **WSL内のファイルシステムに保存して実行** してインストールすることを推奨
 3. Git のリポジトリ（プロジェクトフォルダ）は、**Windows内のフォルダ** で運用する方針であれば、その場所に作成する
 
@@ -104,23 +104,3 @@ Cursor のターミナル（内蔵ターミナル）を開いて、次の2点を
 - `git --version` が実行できること
 
 どちらも問題なく動けば、Cursor からWSLとGitが使える状態です。
-
----
-
-### 4-2. mac の人
-
-macでは、ターミナルから Cursor をインストールできます。
-
-#### インストール
-
-```bash
-sudo npm install -g cursor
-```
-
-#### インストール確認
-
-```bash
-cursor --version
-```
-
-バージョンが表示されれば、Cursor のインストール成功です。
