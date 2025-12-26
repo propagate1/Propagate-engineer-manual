@@ -77,11 +77,14 @@ git config --global user.email "info@propagateinc.com"
 
 ---
 
-## 4. SSHキーの作成（Windows）
+## 4. SSHキーの作成とGitHubへの登録
 
-Windowsの場合、GitHubとの連携のためにSSHキーを作成します。
+GitHubとの連携のためにSSHキーを作成し、GitHubに登録します。
+これにより、パスワードなしでGitHubからプロジェクトをcloneできるようになります。
 
-Git Bashを開いて以下のコマンドを実行：
+### Step 1: SSHキーの作成
+
+ターミナル（Mac）または Git Bash（Windows）を開いて以下のコマンドを実行：
 
 ```bash
 ssh-keygen
@@ -91,14 +94,140 @@ ssh-keygen
 
 ```
 Generating public/private rsa key pair.
-Enter file in which to save the key (/c/Users/ユーザー名/.ssh/id_rsa):
+Enter file in which to save the key (/Users/ユーザー名/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 ```
 
+> ※Windowsの場合は `/c/Users/ユーザー名/.ssh/id_rsa` と表示されます
+
+### Step 2: 公開鍵をコピーする
+
+作成したSSHキー（公開鍵）をクリップボードにコピーします。
+
+**macOS の場合：**
+```bash
+cat ~/.ssh/id_rsa.pub | pbcopy
+```
+
+**Windows（Git Bash）の場合：**
+```bash
+cat ~/.ssh/id_rsa.pub | clip
+```
+
+> これで公開鍵がクリップボードにコピーされました。
+
+### Step 3: GitHubにSSHキーを登録する
+
+1. GitHubにログイン
+   - https://github.com/
+   - アカウント：`info@propagateinc.com`（グーグルでログイン）
+
+2. 右上のプロフィールアイコンをクリック → **Settings** を選択
+
+3. 左メニューから **SSH and GPG keys** をクリック
+
+4. **New SSH key** ボタンをクリック
+
+5. 以下を入力：
+   - **Title**: 自分のPC名など分かりやすい名前（例：`Takeru`）
+   - **Key type**: Authentication Key（デフォルト）
+   - **Key**: 先ほどコピーした公開鍵を貼り付け（`ssh-rsa` で始まる長い文字列）
+
+6. **Add SSH key** をクリック
+
+7. GitHubのパスワードを求められたら入力して完了
+
+### Step 4: SSH接続の確認
+
+SSHキーが正しく登録されたか確認します。
+
+```bash
+ssh -T git@github.com
+```
+
+初回は以下のように表示されます：
+```
+The authenticity of host 'github.com (xxx.xxx.xxx.xxx)' can't be established.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
+
+`yes` と入力してEnterを押してください。
+
+以下のメッセージが表示されれば成功です：
+```
+Hi propagate1! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
 ---
 
-## 5. Gitインストール確認
+## 5. GitHubからプロジェクトをcloneする
+
+SSHキーの登録が完了したら、GitHubからプロジェクトをcloneできます。
+ここでは、エンジニアマニュアルのリポジトリをcloneします。
+
+### Step 1: Propagateフォルダを作成
+
+ターミナル（Mac）または Git Bash（Windows）で以下を実行：
+
+```bash
+# ホームディレクトリに移動
+cd ~
+
+# Propagateフォルダを作成
+mkdir Propagate
+
+# 作成したフォルダに移動
+cd Propagate
+```
+
+### Step 2: エンジニアマニュアルをclone
+
+Propagateフォルダ内で以下のコマンドを実行：
+
+```bash
+git clone git@github.com:propagate1/Propagate-engineer-manual.git
+```
+
+> リポジトリURL: https://github.com/propagate1/Propagate-engineer-manual
+
+### Step 3: cloneの確認
+
+```bash
+# cloneしたディレクトリに移動
+cd Propagate-engineer-manual
+
+# ファイル一覧を確認
+ls
+```
+
+以下のようなファイルが表示されればclone成功です：
+```
+01_slackとアカウントのログイン.md
+02_会社説明.md
+03_gitとcursorのインストール.md
+README.md
+```
+
+### フォルダ構成
+
+cloneが完了すると、以下のようなフォルダ構成になります：
+
+```
+~/
+└── Propagate/                          ← 作成したフォルダ
+    └── Propagate-engineer-manual/      ← cloneしたリポジトリ
+        ├── 01_slackとアカウントのログイン.md
+        ├── 02_会社説明.md
+        ├── 03_gitとcursorのインストール.md
+        └── README.md
+```
+
+> 今後、他のプロジェクトもこの `Propagate` フォルダ内にcloneしていきます。
+
+---
+
+## 6. Gitインストール確認
 
 以下のコマンドを実行し、バージョンが表示されればOKです。
 
