@@ -6,22 +6,14 @@
 業務に必要なGoogleアカウントにログインします。
 パスワードや2段階認証コードは、セキュリティの関係上、**直接社員に確認してください**。
 
-### ① メインアカウントへのログイン
-まずは以下の代表アカウントにログインしてください。
-
-* **Email**: `info@propagateinc.com`
-* **Password**: （社員に確認）
-* **2FA**: （社員に確認）
-
-### ② 業務アカウントへの追加ログイン
-`info@propagateinc.com` にログイン後、ブラウザの「アカウントを追加」から、以下の4つのアカウントにもすべてログインしてください。
+ブラウザの「アカウントを追加」から、以下の4つのアカウントにすべてログインしてください。
 
 1.  `propagate.ai.webcreation@gmail.com`
 2.  `propagate.ai.webcreation2@gmail.com`
 3.  `propagate.ai.webcreation3@gmail.com`
 4.  `propagate.ai.webcreation4@gmail.com`
 
-※これらのパスワードも同様に社員に確認してください。
+※これらのパスワードは社員に確認してください。
 
 ---
 
